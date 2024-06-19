@@ -1,4 +1,4 @@
-import * as React from 'react';
+// import * as React from 'react';
 
 const list = [
   {
@@ -19,19 +19,30 @@ const list = [
   }
 ]
 
-function App() {
-
+const App = () => {
   return (
     <div>
       <h1>My Hacker Stories</h1>
+      <Search/>
+      <hr/>
+      <List />
+    </div>
+  );
+}
 
+const Search = () => {
+  return (
+    <div>
       <label htmlFor="search">Search: </label>
       <input id="search" type="text"/>
+    </div>
+  )
+}
 
-      <hr/>
-
-      <ul>
-        {list.map(function(item){
+const List = () => {
+  return(
+    <ul>
+        {list.map((item) => {
           return(
             <li key={item.objectID}>
               <span>
@@ -43,10 +54,8 @@ function App() {
             </li>
           ) 
         })}
-      </ul>
-      
-    </div>
-  );
+    </ul>
+  )
 }
 
 export default App;
