@@ -1,10 +1,10 @@
 
-const Search = (props) => {
+const Search = ({ search, onSearch }) => {
 
   return (
     <div>
       <label htmlFor="search">Search: </label>
-      <input id="search" type="text" onChange={props.onSearch} />
+      <input id="search" type="text" value={search} onChange={onSearch} />
     </div>
   )
 }

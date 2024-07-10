@@ -1,5 +1,5 @@
 
-const Item = ({item}) => (
+const Item = ({ item }) => (
   <li>
     <span>
       <a href={item.url}>{item.title}</a>
