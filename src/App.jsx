@@ -3,6 +3,17 @@ import * as React from 'react';
 import Search from './components/Search';
 import List from './components/List';
 
+const useStorageState = (key, initialSate) => {
+  const [value, setValue] = React.useState(
+    localStorage.getItem(key) || initialSate
+  )
+  React.useEffect(() => {
+    localStorage.setItem(key, value);
+  }, [value, key]);
+
+  return [value, setValue];
+};
+
 const App = () => {
   
   const stories = [
@@ -23,10 +34,9 @@ const App = () => {
       objectID: 1,
     }
   ]
-  const [searchTerm, setSearchTerm] = React.useState('');
+  const [searchTerm, setSearchTerm] = useStorageState('search', 'React');
 
   const handleSearch = (event) => {
-    console.log(event.target.value);
     setSearchTerm(event.target.value);
   };
 
