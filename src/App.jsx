@@ -1,7 +1,7 @@
 // import './App.css';
 import * as React from 'react';
-import Search from './components/Search';
 import List from './components/List';
+import InputWithLabel from './components/InputWithLabel';
 
 const useStorageState = (key, initialSate) => {
   const [value, setValue] = React.useState(
@@ -47,7 +47,12 @@ const App = () => {
   return (
     <div>
       <h1>My Hacker Stories</h1>
-      <Search search={searchTerm} onSearch={handleSearch} />
+      <InputWithLabel
+        id='search'
+        label="Search"
+        value={searchTerm}
+        onInputChange={handleSearch}
+      />
       <hr />
       <List list={searchedStories} />
     </div>
