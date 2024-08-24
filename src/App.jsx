@@ -2,7 +2,7 @@
 import * as React from 'react';
 import axios from 'axios';
 import List from './components/List';
-import InputWithLabel from './components/InputWithLabel';
+import SearchForm from './components/SearchForm';
 
 
 const storiesReducer = (state, action) => {
@@ -89,28 +89,20 @@ const App = () => {
     setSearchTerm(event.target.value);
   };
 
-  const handleSearchSubmit = () => {
+  const handleSearchSubmit = (event) => {
     setUrl(`${API_ENDPOINT}${searchTerm}`);
+    event.preventDefault();
   };
 
   return (
     <div>
       <h1>My Hacker Stories</h1>
-      <InputWithLabel
-        id='search'
-        value={searchTerm}
-        isFocused
-        onInputChange={handleSearchInput}
-      >
-        <strong>Search: </strong>
-      </InputWithLabel>
-      <button 
-        type='button' 
-        disabled={!searchTerm} 
-        onClick={handleSearchSubmit}
-      >
-        Submit
-      </button>
+      <SearchForm
+        searchTerm={searchTerm}
+        onSearchInput={handleSearchInput}
+        onSearchSubmit={handleSearchSubmit}
+      />
+      
       <hr />
       {stories.isError && <p>Something went wrong ...</p>}
       {stories.isLoading ? (<p>Loading ...</p>) : (
