@@ -53,29 +53,25 @@ const API_ENDPOINT = 'https://hn.algolia.com/api/v1/search?query=';
 
 const App = () => {
   const [searchTerm, setSearchTerm] = useStorageState('search', 'React');
-
-  const [url, setUrl] = React.useState(`${API_ENDPOINT}${searchTerm}`)
+  const [url, setUrl] = React.useState(`${API_ENDPOINT}${searchTerm}`);
  
   const [stories, dispatchStories] = React.useReducer(
     storiesReducer, 
     {data: [], isLoading: false, isError: false}
   );
 
-  const handleFetchStories = React.useCallback(() => {
-
+  const handleFetchStories = React.useCallback(async() => {
     dispatchStories({type: 'STORIES_FETCH_INIT'});
 
-    axios
-      .get(url)
-      .then((result) => {
-        dispatchStories({
+    try{
+      const result = await axios.get(url);
+      dispatchStories({
           type: 'STORIES_FETCH_SUCCESS',
           payload: result.data.hits,
-        });
-      })
-      .catch(() => 
-        dispatchStories({ type: 'STORIES_FETCH_FAILURE' })
-      );
+      });
+    } catch {
+      dispatchStories({ type: 'STORIES_FETCH_FAILURE' })
+    }
   }, [url]);
 
   React.useEffect(() => {
