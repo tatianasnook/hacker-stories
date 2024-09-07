@@ -1,4 +1,4 @@
-import './App.css';
+import styles from './App.module.css';
 import * as React from 'react';
 import axios from 'axios';
 import List from './components/List';
@@ -95,8 +95,8 @@ const App = () => {
   };
 
   return (
-    <div className='container'>
-      <h1 className='headline-primary'>My Hacker Stories</h1>
+    <div className={styles.container}>
+      <h1 className={styles.headlinePrimary}>My Hacker Stories</h1>
       <SearchForm
         searchTerm={searchTerm}
         onSearchInput={handleSearchInput}

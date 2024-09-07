@@ -1,5 +1,5 @@
 import { useEffect, useRef } from "react";
-
+import styles from '../App.module.css';
 
 const InputWithLabel = ({ id, value, type="text", onInputChange, isFocused, children}) => {
   const inputRef = useRef();
@@ -12,7 +12,7 @@ const InputWithLabel = ({ id, value, type="text", onInputChange, isFocused, chil
   
   return (
     <>
-      <label htmlFor={id} className="label">
+      <label htmlFor={id} className={styles.label}>
         {children}
       </label>
       &nbsp;
@@ -23,7 +23,7 @@ const InputWithLabel = ({ id, value, type="text", onInputChange, isFocused, chil
         value={value}
         autoFocus={isFocused}
         onChange={onInputChange}
-        className="input"
+        className={styles.input}
       />
     </>
   )
