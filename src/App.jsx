@@ -1,4 +1,4 @@
-// import './App.css';
+import './App.css';
 import * as React from 'react';
 import axios from 'axios';
 import List from './components/List';
@@ -95,15 +95,14 @@ const App = () => {
   };
 
   return (
-    <div>
-      <h1>My Hacker Stories</h1>
+    <div className='container'>
+      <h1 className='headline-primary'>My Hacker Stories</h1>
       <SearchForm
         searchTerm={searchTerm}
         onSearchInput={handleSearchInput}
         onSearchSubmit={handleSearchSubmit}
       />
       
-      <hr />
       {stories.isError && <p>Something went wrong ...</p>}
       {stories.isLoading ? (<p>Loading ...</p>) : (
         <List list={stories.data} onRemoveItem={handleRemoveStory} />
