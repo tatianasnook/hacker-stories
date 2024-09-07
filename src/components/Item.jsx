@@ -1,7 +1,7 @@
-import styles from '../App.module.css';
+import checkIcon from '../assets/check.svg';
 
 const Item = ({ item, onRemoveItem }) => (
-  <li className={styles.item}>
+  <li className='item'>
     <span style={{ width: '40%' }}>
       <a href={item.url}>{item.title}</a>
     </span>
@@ -12,9 +12,9 @@ const Item = ({ item, onRemoveItem }) => (
       <button 
         type="button" 
         onClick={() => onRemoveItem(item)}
-        className={`${styles.button} ${styles.buttonSmall}`}
+        className='button button-small'
         >
-        Dismiss
+        <img src={checkIcon} alt="check icon" height='18px' width='18px' />
       </button>
     </span>
   </li>
